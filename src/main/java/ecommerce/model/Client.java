@@ -8,7 +8,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Client implements AbstractModel{
-	private static final long serialVersionUID = 2431495128660281404L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

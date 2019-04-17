@@ -14,42 +14,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ecommerce.model.Client;
-import ecommerce.service.ClientService;
+import ecommerce.model.Product;
+import ecommerce.service.ProductService;
 
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
-
+@RequestMapping("/products")
+public class ProductController {
+	
 	@Autowired
-	private ClientService service;
-
+	private ProductService service;
+	
 	@PostMapping("/")
-	public ResponseEntity<Client> create(@RequestBody Client c){
-		service.create(c);
+	public ResponseEntity<Client> create(@RequestBody Product p){
+		service.create(p);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Client> read(@PathVariable(value = "id") Long id){
-		Client c = service.read(id);
-		return new ResponseEntity<>(c, HttpStatus.FOUND);
+	public ResponseEntity<Product> read(@PathVariable(value = "id") Long id){
+		Product p = service.read(id);
+		return new ResponseEntity<>(p, HttpStatus.FOUND);
 	}
 	
 	@PutMapping("/")
-	public ResponseEntity<Client> update(@RequestBody Client c){
-		service.update(c);
+	public ResponseEntity<Product> update(@RequestBody Product p){
+		service.update(p);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Client> delete(@PathVariable(value = "id") Long id){
+	public ResponseEntity<Product> delete(@PathVariable(value = "id") Long id){
 		service.delete(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<Iterable<Client>> readAll(Pageable pageable){
-		Iterable<Client> cs = service.readAll(pageable);
-		return new ResponseEntity<>(cs, HttpStatus.OK);
+	public ResponseEntity<Iterable<Product>> readAll(Pageable pageable){
+		Iterable<Product> ps = service.readAll(pageable);
+		return new ResponseEntity<>(ps, HttpStatus.OK);
 	}
 }
