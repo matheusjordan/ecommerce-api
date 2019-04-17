@@ -13,43 +13,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ecommerce.model.Product;
-import ecommerce.service.ProductService;
+import ecommerce.model.Stock;
+import ecommerce.service.StockService;
 
 @RestController
-@RequestMapping("/products")
-public class ProductController {
-	
+@RequestMapping("/stocks")
+public class StockController {
 	@Autowired
-	private ProductService service;
+	private StockService service;
 	
 	@PostMapping("/")
-	public ResponseEntity<Product> create(@RequestBody Product p){
-		service.create(p);
+	public ResponseEntity<Stock> create(@RequestBody Stock s){
+		service.create(s);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Product> read(@PathVariable(value = "id") Long id){
-		Product p = service.read(id);
-		return new ResponseEntity<>(p, HttpStatus.FOUND);
+	public ResponseEntity<Stock> read(@PathVariable(value = "id") Long id){
+		Stock s = service.read(id);
+		return new ResponseEntity<>(s, HttpStatus.FOUND);
 	}
 	
 	@PutMapping("/")
-	public ResponseEntity<Product> update(@RequestBody Product p){
-		service.update(p);
+	public ResponseEntity<Stock> update(@RequestBody Stock s){
+		service.update(s);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Product> delete(@PathVariable(value = "id") Long id){
+	public ResponseEntity<Stock> delete(@PathVariable(value = "id") Long id){
 		service.delete(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping("/all")
-	public ResponseEntity<Iterable<Product>> readAll(Pageable pageable){
-		Iterable<Product> ps = service.readAll(pageable);
-		return new ResponseEntity<>(ps, HttpStatus.OK);
+	public ResponseEntity<Iterable<Stock>> readAll(Pageable pageable){
+		Iterable<Stock> ss = service.readAll(pageable);
+		return new ResponseEntity<>(ss, HttpStatus.OK);
 	}
 }
