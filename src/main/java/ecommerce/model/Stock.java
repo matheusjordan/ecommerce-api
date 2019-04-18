@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Stock implements AbstractModel {
+	private static final long serialVersionUID = -1225633974024456685L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +17,7 @@ public class Stock implements AbstractModel {
 	@Column(nullable = false)
 	private Integer amount;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private Product product;
 
 	public Stock(Integer amount, Product product) {

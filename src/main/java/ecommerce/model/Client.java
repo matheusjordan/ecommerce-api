@@ -8,12 +8,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Client implements AbstractModel{
-	
+	private static final long serialVersionUID = 1020414291391356820L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String username;
 	
 	public Client(String username) {
