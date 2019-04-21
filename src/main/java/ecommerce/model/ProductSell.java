@@ -1,11 +1,13 @@
 package ecommerce.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+@Entity
 public class ProductSell implements AbstractModel {
 	private static final long serialVersionUID = 7241950029777328743L;
 
@@ -18,6 +20,9 @@ public class ProductSell implements AbstractModel {
 
 	@OneToOne
 	private Product product;
+	
+	protected ProductSell() {
+	}
 
 	public ProductSell(Integer amount, Product product) {
 		Amount = amount;

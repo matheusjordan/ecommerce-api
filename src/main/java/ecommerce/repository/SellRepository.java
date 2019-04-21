@@ -3,9 +3,9 @@ package ecommerce.repository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import ecommerce.model.Client;
+import ecommerce.model.Sell;
 
 @Repository
-public interface ClientRepository extends PagingAndSortingRepository<Client, Long>{
-	public Client findByUsername(String username);
+public interface SellRepository extends PagingAndSortingRepository<Sell, Long>{
+
 }

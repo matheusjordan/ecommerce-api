@@ -19,6 +19,9 @@ public class Product implements AbstractModel {
 	
 	@Column(nullable = false)
 	private Double price;
+	
+	protected Product() {
+	}
 
 	public Product(String name, Double price) {
 		this.name = name;
